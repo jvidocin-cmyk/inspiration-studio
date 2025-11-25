@@ -7,30 +7,23 @@ const spaceTypes = [
   {
     icon: Briefcase,
     title: "Bureaux Privés",
-    description: "De 10 à 100 m² pour vos équipes",
-    features: ["Climatisation", "Fibre optique", "Mobilier inclus"],
+    description: "Location courte durée à partir de 45€",
+    features: ["Demi-journée", "Journée", "Semaine"],
     color: "text-sky-navy",
-  },
-  {
-    icon: Users,
-    title: "Espaces Coworking",
-    description: "Postes flexibles à partir de 150€/mois",
-    features: ["Accès 24/7", "Salle de pause", "Événements"],
-    color: "text-sky-blue",
   },
   {
     icon: Presentation,
     title: "Salles de Réunion",
     description: "Équipées pour vos présentations",
-    features: ["Écran 4K", "Visioconférence", "Wifi premium"],
-    color: "text-sky-navy",
+    features: ["Écran 4K", "Visioconférence", "À partir de 60€"],
+    color: "text-sky-blue",
   },
   {
     icon: Store,
-    title: "Locaux Commerciaux",
-    description: "Vitrines et boutiques sur rue",
-    features: ["Visibilité maximale", "Parking client", "Emplacement premium"],
-    color: "text-sky-blue",
+    title: "Baux Commerciaux",
+    description: "Locaux long terme avec vitrine",
+    features: ["Visibilité maximale", "Parking client", "Sur devis"],
+    color: "text-sky-navy",
   },
 ];
 
@@ -47,7 +40,7 @@ const SpacesSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {spaceTypes.map((space, index) => {
             const Icon = space.icon;
             return (
