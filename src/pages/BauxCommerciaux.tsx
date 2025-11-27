@@ -5,29 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { commercialListings } from "@/data/commercial-listings";
-import { Building2, Compass, Sparkles, Square, TrendingUp } from "lucide-react";
+import { Building2, Compass, Sparkles, Square, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import CommercialContactSheet from "@/components/contact/CommercialContactSheet";
 
 const stats = [
   {
     icon: Building2,
-    label: "Locaux disponibles",
-    value: `${commercialListings.length}`,
+    label: "Patrimoine géré",
+    value: "3 sites premium",
   },
   {
     icon: Square,
-    label: "Surface cumulée",
-    value: "515 m²",
+    label: "Locaux disponibles",
+    value: `${commercialListings.length} espaces`,
   },
   {
-    icon: TrendingUp,
-    label: "Loyers mensuels",
-    value: "À partir de 2 450 € HT",
+    icon: MapPin,
+    label: "Emplacements",
+    value: "Zones stratégiques",
   },
   {
     icon: Compass,
-    label: "Sites stratégiques",
-    value: "Jarry, Petit-Bourg, Marina",
+    label: "Accompagnement",
+    value: "Installation clés en main",
   },
 ];
 
@@ -41,17 +42,17 @@ const BauxCommerciaux = () => {
           <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&q=80&auto=format&fit=crop')] bg-cover bg-center" />
           <div className="container mx-auto px-4 pt-32 pb-24 relative">
             <div className="max-w-3xl space-y-6 animate-fade-in-up">
-              <Badge variant="secondary" className="uppercase tracking-[0.3em]">Baux commerciaux</Badge>
+              <Badge variant="secondary" className="uppercase tracking-[0.3em]">Notre patrimoine commercial</Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Des adresses ultra-visibles pour installer votre concept
+                Nos locaux commerciaux en Guadeloupe
               </h1>
               <p className="text-lg md:text-xl opacity-90">
-                Sélection de locaux commerciaux premium en Guadeloupe, prêts à accueillir votre enseigne. Chaque espace combine emplacement stratégique, visibilité maximale et prestations haut de gamme pour accélérer votre implantation.
+                Sky Lounge possède et gère un patrimoine d'immeubles commerciaux situés sur des emplacements stratégiques en Guadeloupe. Locaux livrés équipés, visibilité maximale et accompagnement personnalisé pour réussir votre implantation.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Badge className="bg-white/10">Retail premium</Badge>
-                <Badge className="bg-white/10">Livré clés en main</Badge>
-                <Badge className="bg-white/10">Flux client établis</Badge>
+                <Badge className="bg-white/10">Propriétaire & gestionnaire</Badge>
+                <Badge className="bg-white/10">Espaces premium</Badge>
+                <Badge className="bg-white/10">Accompagnement dédié</Badge>
               </div>
             </div>
 
@@ -79,10 +80,10 @@ const BauxCommerciaux = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-4 mb-16 animate-fade-in-up">
-              <Badge variant="outline" className="bg-secondary/10 text-secondary border-secondary/20">Sélection Inspiration Studio</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold">Des espaces pensés pour révéler votre marque</h2>
+              <Badge variant="outline" className="bg-secondary/10 text-secondary border-secondary/20">Nos locaux disponibles</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold">Des espaces conçus pour votre réussite</h2>
               <p className="text-muted-foreground text-lg">
-                Nous identifions des surfaces à fort potentiel dans des zones dynamiques de Guadeloupe, avec des flux naturels de clientèle et des prestations techniques qui simplifient votre installation.
+                Chaque local de notre patrimoine bénéficie d'un emplacement premium, d'équipements modernes et d'un accompagnement personnalisé. Contactez-nous pour échanger sur votre projet et obtenir les conditions tarifaires adaptées.
               </p>
             </div>
 
@@ -116,15 +117,13 @@ const BauxCommerciaux = () => {
 
                     <CardContent className="p-8 lg:p-10 flex flex-col">
                       <div className="space-y-4">
-                        <div className="flex flex-wrap items-start justify-between gap-4">
-                          <div>
-                            <h3 className="text-2xl font-semibold">{listing.title}</h3>
-                            <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium mt-2">
-                              {listing.subtitle}
-                            </p>
-                          </div>
-                          <Badge variant="secondary" className="bg-primary/10 text-primary">
-                            {listing.rent}
+                        <div className="space-y-3">
+                          <h3 className="text-2xl font-semibold">{listing.title}</h3>
+                          <p className="text-sm uppercase tracking-[0.3em] text-primary font-medium">
+                            {listing.subtitle}
+                          </p>
+                          <Badge variant="secondary" className="bg-primary/10 text-primary w-fit">
+                            {listing.availability}
                           </Badge>
                         </div>
 
@@ -155,9 +154,14 @@ const BauxCommerciaux = () => {
                               </Badge>
                             ))}
                           </div>
-                          <Button size="lg" asChild>
-                            <Link to={`/annonces/${listing.slug}`}>Voir l'annonce</Link>
-                          </Button>
+                          <div className="flex gap-3">
+                            <Button size="lg" variant="outline" asChild>
+                              <Link to={`/annonces/${listing.slug}`}>Voir les détails</Link>
+                            </Button>
+                            <CommercialContactSheet listingTitle={listing.title} listingId={listing.id}>
+                              <Button size="lg">Nous contacter</Button>
+                            </CommercialContactSheet>
+                          </div>
                         </div>
                       </div>
                     </CardContent>
@@ -170,29 +174,54 @@ const BauxCommerciaux = () => {
 
         <section className="pb-24">
           <div className="container mx-auto px-4">
-            <Card className="bg-muted/40 border-muted/40">
+            <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border-primary/20">
               <CardContent className="p-10 md:p-12 grid gap-10 md:grid-cols-[2fr_3fr]">
                 <div className="space-y-4">
-                  <Badge variant="secondary" className="w-fit">Accompagnement 360°</Badge>
-                  <h3 className="text-3xl font-semibold">Vous cherchez un local sur-mesure ?</h3>
+                  <Badge variant="secondary" className="w-fit bg-primary/20 text-primary">Un projet d'implantation ?</Badge>
+                  <h3 className="text-3xl font-semibold">Parlons de votre projet commercial</h3>
                   <p className="text-muted-foreground">
-                    Notre équipe sourcing visite et qualifie en continu les locaux commerciaux disponibles en Guadeloupe. Confiez-nous votre cahier des charges : nous organisons les visites, analysons les conditions et négocions le bail à vos côtés.
+                    En tant que propriétaire et gestionnaire, nous accompagnons nos locataires dans toutes les étapes : de la visite à l'installation, en passant par l'étude de faisabilité et l'aménagement sur-mesure.
                   </p>
-                </div>
-                <div className="bg-background border border-muted/40 rounded-2xl p-6 md:p-8 space-y-6">
-                  <div className="grid gap-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Services</p>
-                      <p className="text-base font-medium">Recherche dédiée, audit technique, montage financier</p>
+                  <div className="grid gap-3 pt-4">
+                    <div className="flex items-start gap-3">
+                      <div className="rounded-full bg-primary/10 p-2 text-primary">
+                        <Sparkles className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="font-medium">Visite personnalisée</p>
+                        <p className="text-sm text-muted-foreground">Découvrez nos locaux avec un expert</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Délais moyens</p>
-                      <p className="text-base font-medium">45 jours entre brief et signature de bail</p>
+                    <div className="flex items-start gap-3">
+                      <div className="rounded-full bg-primary/10 p-2 text-primary">
+                        <Sparkles className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="font-medium">Tarification adaptée</p>
+                        <p className="text-sm text-muted-foreground">Conditions sur-mesure selon votre activité</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="rounded-full bg-primary/10 p-2 text-primary">
+                        <Sparkles className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="font-medium">Installation facilitée</p>
+                        <p className="text-sm text-muted-foreground">Aménagements et accompagnement inclus</p>
+                      </div>
                     </div>
                   </div>
-                  <Button size="lg" className="w-full" asChild>
-                    <Link to="/contact">Parler à un consultant</Link>
-                  </Button>
+                </div>
+                <div className="bg-background border border-muted/40 rounded-2xl p-6 md:p-8 flex flex-col justify-center space-y-6">
+                  <div className="space-y-4 text-center">
+                    <h4 className="text-xl font-semibold">Contactez notre équipe</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Remplissez le formulaire pour recevoir toutes les informations sur nos locaux disponibles et échanger sur vos besoins spécifiques.
+                    </p>
+                  </div>
+                  <CommercialContactSheet>
+                    <Button size="lg" className="w-full">Demander des informations</Button>
+                  </CommercialContactSheet>
                 </div>
               </CardContent>
             </Card>
