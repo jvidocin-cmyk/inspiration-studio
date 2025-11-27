@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { commercialListings, findListingBySlug } from "@/data/commercial-listings";
-import { ArrowLeft, CheckCircle2, MapPin, Sparkles } from "lucide-react";
+import { ArrowLeft, CheckCircle2, MapPin, Sparkles, Building2, Phone, Mail } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import CommercialContactSheet from "@/components/contact/CommercialContactSheet";
 
 const AnnonceIntrouvable = () => (
   <div className="min-h-screen bg-background">
@@ -72,9 +73,8 @@ const AnnonceCommerciale = () => {
                 <span>{listing.site}</span>
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <Badge className="bg-white text-primary">{listing.rent}</Badge>
-                <Badge variant="outline" className="border-white/30 text-white/90">Charges : {listing.charges}</Badge>
-                <Badge variant="outline" className="border-white/30 text-white/90">Dépôt : {listing.deposit}</Badge>
+                <Badge className="bg-white/20 text-white border-white/30">Tarifs sur demande</Badge>
+                <Badge className="bg-white/20 text-white border-white/30">Conditions personnalisables</Badge>
               </div>
             </div>
           </div>
@@ -152,29 +152,51 @@ const AnnonceCommerciale = () => {
                   </div>
 
                   <div className="space-y-6">
-                    <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-6">
-                      <h3 className="text-lg font-semibold">Prêt à visiter ?</h3>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        Contactez nos consultants pour organiser une visite et obtenir le dossier complet (plans, diagnostics, détails du bail).
-                      </p>
-                      <div className="space-y-3 text-sm mt-6">
+                    <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-6 space-y-6">
+                      <div className="space-y-3">
+                        <h3 className="text-xl font-semibold">Intéressé par ce local ?</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Contactez-nous pour organiser une visite et obtenir toutes les informations : plans détaillés, conditions tarifaires adaptées à votre activité, possibilités d'aménagement.
+                        </p>
+                      </div>
+
+                      <div className="bg-background/50 border border-primary/10 rounded-xl p-4 space-y-3">
                         <div className="flex items-center gap-3">
-                          <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
-                            IS
+                          <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                            <Building2 className="h-5 w-5" />
                           </div>
                           <div>
-                            <p className="font-medium">Inspiration Studio</p>
-                            <p className="text-muted-foreground">Pôle Retail & Baux</p>
+                            <p className="font-semibold">Sky Lounge</p>
+                            <p className="text-xs text-muted-foreground">Pôle Baux Commerciaux</p>
                           </div>
                         </div>
-                        <p className="text-muted-foreground">Tél. +590 590 00 00 00</p>
-                        <p className="text-muted-foreground">baux@inspirationstudio.fr</p>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center gap-2 text-muted-foreground">
+                            <Phone className="h-3.5 w-3.5" />
+                            <span>+590 690 00 00 00</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-muted-foreground">
+                            <Mail className="h-3.5 w-3.5" />
+                            <span>baux@skylounge.gp</span>
+                          </div>
+                        </div>
                       </div>
-                      <Button size="lg" className="mt-6 w-full" asChild>
-                        <Link to={`/contact?subject=${encodeURIComponent(`Annonce ${listing.id}`)}`}>
+
+                      <CommercialContactSheet listingTitle={listing.title} listingId={listing.id}>
+                        <Button size="lg" className="w-full">
                           Demander une visite
-                        </Link>
-                      </Button>
+                        </Button>
+                      </CommercialContactSheet>
+
+                      <div className="pt-4 border-t space-y-2">
+                        <p className="text-xs font-medium">Ce qui est inclus :</p>
+                        <ul className="text-xs text-muted-foreground space-y-1">
+                          <li>• Visite accompagnée du local</li>
+                          <li>• Dossier technique complet</li>
+                          <li>• Étude de faisabilité personnalisée</li>
+                          <li>• Proposition tarifaire adaptée</li>
+                        </ul>
+                      </div>
                     </div>
 
                     <div className="bg-muted/40 border border-muted/40 rounded-2xl p-6 space-y-4">
@@ -208,16 +230,16 @@ const AnnonceCommerciale = () => {
 
         <section className="pb-24">
           <div className="container mx-auto px-4">
-            <Card className="border-primary/20 bg-primary/5">
+            <Card className="border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
               <CardContent className="p-10 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                 <div className="space-y-3 max-w-xl">
-                  <h3 className="text-2xl font-semibold">Vous hésitez entre plusieurs annonces ?</h3>
+                  <h3 className="text-2xl font-semibold">Explorez nos autres locaux disponibles</h3>
                   <p className="text-muted-foreground">
-                    Nous vous aidons à comparer les conditions financières, analyser les flux et anticiper les aménagements nécessaires pour sécuriser votre décision.
+                    Sky Lounge gère plusieurs espaces commerciaux premium en Guadeloupe. Découvrez notre patrimoine pour trouver le local qui correspond parfaitement à votre projet.
                   </p>
                 </div>
                 <Button size="lg" asChild>
-                  <Link to="/baux-commerciaux">Découvrir les autres locaux</Link>
+                  <Link to="/baux-commerciaux">Voir tous nos locaux</Link>
                 </Button>
               </CardContent>
             </Card>
