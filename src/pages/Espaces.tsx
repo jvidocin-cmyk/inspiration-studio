@@ -17,12 +17,15 @@ import {
   Zap,
   Users,
   Monitor,
-  Calendar
+  Calendar,
+  ArrowRight
 } from "lucide-react";
 import CommercialContactSheet from "@/components/contact/CommercialContactSheet";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Espaces = () => {
+  const navigate = useNavigate();
   const [selectedOffer, setSelectedOffer] = useState<string>("");
   const [isContactOpen, setIsContactOpen] = useState(false);
 
@@ -283,9 +286,10 @@ const Espaces = () => {
                         size="lg" 
                         variant="outline"
                         className="flex-1 text-base"
-                        onClick={() => handleContactClick("Bureau Privé - Demande d'infos")}
+                        onClick={() => navigate("/espaces/bureau-prive")}
                       >
-                        Plus d'informations
+                        Voir les détails
+                        <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
                   </CardContent>
@@ -375,9 +379,10 @@ const Espaces = () => {
                         size="lg" 
                         variant="outline"
                         className="flex-1 text-base border-secondary text-secondary hover:bg-secondary/5"
-                        onClick={() => handleContactClick("Salle de Réunion - Demande d'infos")}
+                        onClick={() => navigate("/espaces/salle-reunion")}
                       >
-                        Plus d'informations
+                        Voir les détails
+                        <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
                   </CardContent>
