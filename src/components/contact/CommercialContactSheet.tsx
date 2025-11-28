@@ -26,15 +26,25 @@ const contactSchema = z.object({
 interface CommercialContactSheetProps {
   listingTitle?: string;
   listingId?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  defaultMessage?: string;
 }
 
 const CommercialContactSheet = ({ 
   listingTitle, 
   listingId,
-  children 
+  children,
+  open: controlledOpen,
+  onOpenChange: controlledOnOpenChange,
+  defaultMessage = ""
 }: CommercialContactSheetProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  
+  // Use controlled state if provided, otherwise use internal state
+  const isOpen = controlledOpen !== undefined ? controlledOpen : internalOpen;
+  const setIsOpen = controlledOnOpenChange !== undefined ? controlledOnOpenChange : setInternalOpen;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState({
@@ -42,7 +52,7 @@ const CommercialContactSheet = ({
     email: "",
     phone: "",
     company: "",
-    message: "",
+    message: defaultMessage,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -96,9 +106,11 @@ ${formData.message}`;
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        {children}
-      </SheetTrigger>
+      {children && (
+        <SheetTrigger asChild>
+          {children}
+        </SheetTrigger>
+      )}
       <SheetContent className="w-full sm:max-w-xl overflow-y-auto">
         <SheetHeader className="space-y-3 pb-8">
           <div className="inline-flex items-center gap-2 text-primary">
