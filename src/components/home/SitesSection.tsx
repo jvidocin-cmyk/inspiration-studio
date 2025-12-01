@@ -28,7 +28,7 @@ const sites = [
 
 const SitesSection = () => {
   return (
-    <section className="py-20 bg-muted">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold">Découvrez nos implantations</h2>
@@ -37,47 +37,51 @@ const SitesSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
           {sites.map((site, index) => (
             <Card 
               key={site.id} 
-              className="overflow-hidden group hover:shadow-large transition-all duration-300 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="overflow-hidden group hover:shadow-strong transition-all duration-300 hover:-translate-y-1 animate-fade-in-up border-border/50"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-80 overflow-hidden">
                 <img 
                   src={site.image} 
                   alt={site.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute top-4 left-4">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium">
-                    <MapPin className="h-4 w-4 text-primary" />
+                <div className="absolute inset-0 bg-gradient-to-t from-sky-navy/90 via-sky-navy/40 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-blue/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4 border border-sky-blue/30">
+                    <MapPin className="h-4 w-4" />
                     {site.location}
-                  </span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">{site.name}</h3>
                 </div>
               </div>
 
-              <CardContent className="p-6 space-y-4">
-                <h3 className="text-2xl font-bold">{site.name}</h3>
-                <p className="text-muted-foreground">{site.description}</p>
+              <CardContent className="p-8 space-y-6">
+                <p className="text-muted-foreground leading-relaxed">{site.description}</p>
 
                 <div className="grid grid-cols-3 gap-4 pt-4 border-t">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Building2 className="h-5 w-5 text-primary" />
-                    <span className="font-medium">{site.surface}</span>
+                  <div className="text-center">
+                    <Building2 className="h-6 w-6 text-sky-blue mx-auto mb-2" />
+                    <div className="text-lg font-bold text-foreground">{site.surface}</div>
+                    <div className="text-xs text-muted-foreground">Surface</div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Building2 className="h-5 w-5 text-primary" />
-                    <span className="font-medium">{site.spaces}</span>
+                  <div className="text-center">
+                    <Building2 className="h-6 w-6 text-sky-blue mx-auto mb-2" />
+                    <div className="text-lg font-bold text-foreground">{site.spaces}</div>
+                    <div className="text-xs text-muted-foreground">Espaces</div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Car className="h-5 w-5 text-primary" />
-                    <span className="font-medium">{site.parking}</span>
+                  <div className="text-center">
+                    <Car className="h-6 w-6 text-sky-blue mx-auto mb-2" />
+                    <div className="text-lg font-bold text-foreground">{site.parking}</div>
+                    <div className="text-xs text-muted-foreground">Parking</div>
                   </div>
                 </div>
 
-                <Button asChild className="w-full mt-4">
+                <Button asChild className="w-full bg-sky-blue hover:bg-sky-blue/90 shadow-glow">
                   <Link to="/sites">
                     Découvrir ce site
                   </Link>
@@ -85,6 +89,14 @@ const SitesSection = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center">
+          <Button asChild size="lg" variant="outline" className="border-sky-blue text-sky-blue hover:bg-sky-blue/10">
+            <Link to="/sites">
+              Voir tous nos sites
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

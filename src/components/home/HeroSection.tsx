@@ -5,33 +5,33 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image/Gradient */}
+      {/* Background with Image */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          background: "linear-gradient(135deg, hsl(var(--sky-navy)) 0%, hsl(var(--sky-blue)) 100%)",
+          backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')",
         }}
       >
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-navy/85 via-sky-navy/75 to-sky-navy/90" />
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+        <div className="max-w-5xl mx-auto space-y-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight animate-fade-in">
             Votre espace professionnel
-            <span className="block mt-2">en Guadeloupe</span>
+            <span className="block mt-2 text-sky-blue">en Guadeloupe</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Bureaux, salles de réunion et locaux commerciaux à Baie-Mahault et Petit-Bourg
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed animate-fade-in [animation-delay:100ms]">
+            Des bureaux privés, salles de réunion équipées et locaux commerciaux premium à Baie-Mahault et Petit-Bourg
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 animate-fade-in [animation-delay:200ms]">
             <Button 
               asChild 
               size="lg" 
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 shadow-large"
+              className="bg-sky-blue hover:bg-sky-blue/90 text-white text-lg px-10 py-7 shadow-glow"
             >
               <Link to="/espaces">
                 Explorer nos espaces
@@ -43,35 +43,35 @@ const HeroSection = () => {
               asChild 
               size="lg" 
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6"
+              className="border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm text-lg px-10 py-7"
             >
-              <Link to="/sites">
-                Voir les disponibilités
+              <Link to="/contact">
+                Nous contacter
               </Link>
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-8 pt-16 max-w-3xl mx-auto animate-fade-in [animation-delay:300ms]">
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-white">2</div>
-              <div className="text-sm md:text-base text-white/80">Sites en Guadeloupe</div>
+              <div className="text-5xl md:text-6xl font-bold text-sky-blue">2</div>
+              <div className="text-sm md:text-base text-white/90 font-medium">Sites en Guadeloupe</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-white">50+</div>
-              <div className="text-sm md:text-base text-white/80">Espaces disponibles</div>
+              <div className="text-5xl md:text-6xl font-bold text-sky-blue">50+</div>
+              <div className="text-sm md:text-base text-white/90 font-medium">Espaces disponibles</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-white">100+</div>
-              <div className="text-sm md:text-base text-white/80">Entreprises hébergées</div>
+              <div className="text-5xl md:text-6xl font-bold text-sky-blue">100+</div>
+              <div className="text-sm md:text-base text-white/90 font-medium">Entreprises hébergées</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-float">
-        <ChevronDown className="h-8 w-8 text-white/60" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <ChevronDown className="h-8 w-8 text-white/70" />
       </div>
     </section>
   );
