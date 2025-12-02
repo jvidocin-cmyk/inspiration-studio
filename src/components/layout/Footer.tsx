@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo & Description */}
           <div className="space-y-4">
             <img src={logo} alt="Sky Lounge" className="h-16 w-auto brightness-0 invert" />
@@ -40,8 +40,35 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/annuaire" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
-                  Annuaire
+                <Link to="/a-propos" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
+                  À Propos
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Informations */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Informations</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/cgv" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
+                  CGV
+                </Link>
+              </li>
+              <li>
+                <Link to="/mentions-legales" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
+                  Mentions Légales
+                </Link>
+              </li>
+              <li>
+                <Link to="/politique-confidentialite" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
+                  Politique de Confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm opacity-90 hover:opacity-100 transition-opacity">
+                  Contact
                 </Link>
               </li>
             </ul>
