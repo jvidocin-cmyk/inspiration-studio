@@ -328,6 +328,163 @@ const BureauPrive = () => {
         </div>
       </section>
 
+      {/* Pour Qui Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Pour qui ?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Notre bureau privé s'adapte à vos besoins professionnels
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                title: "Entrepreneurs & Freelances",
+                description: "Un espace professionnel pour vos rendez-vous clients sans les coûts d'un bureau permanent"
+              },
+              {
+                title: "Consultants & Formateurs",
+                description: "Un lieu adapté pour vos sessions de conseil, coaching ou formations individuelles"
+              },
+              {
+                title: "Équipes en déplacement",
+                description: "Une base temporaire pour vos collaborateurs en mission en Guadeloupe"
+              }
+            ].map((profile, idx) => (
+              <Card key={idx} className="p-8 text-center border-sky-blue/20 hover:border-sky-blue/50 transition-all">
+                <h3 className="text-xl font-semibold mb-3 text-sky-blue">{profile.title}</h3>
+                <p className="text-muted-foreground">{profile.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Comment réserver ?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Un processus simple et rapide pour accéder à votre espace
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                step: "01",
+                title: "Contactez-nous",
+                description: "Remplissez le formulaire ou appelez-nous pour indiquer vos besoins et dates souhaitées"
+              },
+              {
+                step: "02",
+                title: "Confirmation rapide",
+                description: "Nous vérifions la disponibilité et vous confirmons votre réservation sous 24h"
+              },
+              {
+                step: "03",
+                title: "Installez-vous",
+                description: "Présentez-vous à l'accueil avec votre confirmation, récupérez votre badge et travaillez"
+              }
+            ].map((process, idx) => (
+              <div key={idx} className="relative">
+                <div className="text-6xl font-bold text-sky-blue/20 mb-4">{process.step}</div>
+                <h3 className="text-2xl font-semibold mb-3">{process.title}</h3>
+                <p className="text-muted-foreground">{process.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Questions fréquentes</h2>
+              <p className="text-muted-foreground">
+                Tout ce que vous devez savoir sur la location de bureau privé
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Puis-je réserver pour quelques heures seulement ?",
+                  a: "Oui, nous proposons des formules demi-journée (4h) et journée (8h). Pour des durées plus courtes, contactez-nous pour une solution sur-mesure."
+                },
+                {
+                  q: "Le bureau est-il équipé ?",
+                  a: "Absolument. Chaque bureau dispose d'un mobilier ergonomique complet, connexion fibre optique, climatisation et accès à la cuisine commune."
+                },
+                {
+                  q: "Y a-t-il du parking ?",
+                  a: "Oui, le parking est gratuit et sécurisé pour vous et vos visiteurs."
+                },
+                {
+                  q: "Puis-je annuler ma réservation ?",
+                  a: "Les annulations sont possibles jusqu'à 48h avant la date prévue sans frais. Contactez-nous pour plus de détails sur nos conditions."
+                },
+                {
+                  q: "Le wifi est-il inclus ?",
+                  a: "Oui, connexion fibre optique ultra-rapide incluse dans tous nos tarifs."
+                }
+              ].map((faq, idx) => (
+                <Card key={idx} className="p-6 hover:shadow-medium transition-shadow">
+                  <h3 className="font-semibold mb-2 text-lg">{faq.q}</h3>
+                  <p className="text-muted-foreground">{faq.a}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Ils nous font confiance</h2>
+            <p className="text-muted-foreground">
+              Découvrez les témoignages de nos clients
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: "Marie Dubois",
+                role: "Consultante RH",
+                text: "Un espace parfait pour mes rendez-vous clients. Professionnel, bien situé et flexible. Je recommande à 100%!"
+              },
+              {
+                name: "Jean-Marc Laurent",
+                role: "Freelance IT",
+                text: "La formule à la journée est idéale quand j'ai besoin de me concentrer. Internet ultra-rapide et calme garanti."
+              },
+              {
+                name: "Sophie Martin",
+                role: "Coach d'entreprise",
+                text: "Je loue régulièrement pour mes sessions de coaching. L'accueil est top et mes clients apprécient le cadre moderne."
+              }
+            ].map((testimonial, idx) => (
+              <Card key={idx} className="p-8">
+                <div className="mb-4 text-sky-blue text-4xl">"</div>
+                <p className="text-muted-foreground mb-6 italic">{testimonial.text}</p>
+                <div>
+                  <div className="font-semibold">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-20 bg-gradient-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

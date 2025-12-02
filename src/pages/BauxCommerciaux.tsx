@@ -227,6 +227,129 @@ const BauxCommerciaux = () => {
             </Card>
           </div>
         </section>
+
+        {/* Process Section */}
+        <section className="py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <Badge variant="outline" className="mb-4">Notre accompagnement</Badge>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                  Un processus simple et transparent
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  De la première visite à l'ouverture de votre commerce, nous vous guidons à chaque étape
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    step: "01",
+                    title: "Échange & Visite",
+                    description: "Nous discutons de votre projet, vos besoins et vous faisons visiter les locaux disponibles. Nous vous présentons les atouts de chaque emplacement."
+                  },
+                  {
+                    step: "02",
+                    title: "Étude & Proposition",
+                    description: "Nous élaborons une proposition commerciale adaptée à votre activité avec conditions tarifaires personnalisées et modalités d'aménagement."
+                  },
+                  {
+                    step: "03",
+                    title: "Installation & Suivi",
+                    description: "Signature du bail, travaux d'aménagement si nécessaire, remise des clés et accompagnement lors de votre installation."
+                  }
+                ].map((process, idx) => (
+                  <Card key={idx} className="p-8 border-none shadow-soft hover:shadow-medium transition-all">
+                    <div className="text-6xl font-bold text-primary/20 mb-4">{process.step}</div>
+                    <h3 className="text-2xl font-semibold mb-4">{process.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{process.description}</p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <Badge variant="outline" className="mb-4">Témoignages</Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Ils nous font confiance
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Découvrez les retours de nos locataires qui ont choisi Sky Lounge pour développer leur activité
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[
+                {
+                  name: "Sophie Bernard",
+                  company: "Boutique Mode & Accessoires",
+                  location: "Jarry",
+                  text: "Excellent emplacement avec un flux client constant. L'équipe Sky Lounge a été très professionnelle de la visite jusqu'à l'ouverture."
+                },
+                {
+                  name: "Pierre Dumont",
+                  company: "Agence Immobilière",
+                  location: "Petit-Bourg",
+                  text: "Locaux modernes et bien entretenus. La visibilité sur la zone est parfaite pour notre activité. Très satisfait de notre choix."
+                },
+                {
+                  name: "Marie-Claire Joseph",
+                  company: "Cabinet Médical",
+                  location: "Jarry",
+                  text: "Infrastructure impeccable, parking pratique pour nos patients. L'accompagnement pendant l'installation a été un vrai plus."
+                }
+              ].map((testimonial, idx) => (
+                <Card key={idx} className="p-8 border-none shadow-soft hover:shadow-medium transition-all">
+                  <div className="mb-6 text-primary text-5xl">"</div>
+                  <p className="text-muted-foreground mb-8 italic leading-relaxed text-lg">
+                    {testimonial.text}
+                  </p>
+                  <div className="border-t pt-6">
+                    <div className="font-semibold text-lg">{testimonial.name}</div>
+                    <div className="text-sm text-primary font-medium">{testimonial.company}</div>
+                    <div className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
+                      <MapPin className="h-3 w-3" />
+                      {testimonial.location}
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-24">
+          <div className="container mx-auto px-4">
+            <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border-primary/20">
+              <CardContent className="p-10 md:p-12 grid gap-10 md:grid-cols-[2fr_3fr]">
+                <div className="space-y-4">
+                  <Badge variant="secondary" className="w-fit bg-primary/20 text-primary">Un projet d'implantation ?</Badge>
+                  <h3 className="text-3xl font-semibold">Parlons de votre projet commercial</h3>
+                  <p className="text-muted-foreground">
+                    En tant que propriétaire et gestionnaire, nous accompagnons nos locataires dans toutes les étapes : de la visite à l'installation, en passant par l'étude de faisabilité et l'aménagement sur-mesure.
+                  </p>
+                </div>
+                <div className="bg-background border border-muted/40 rounded-2xl p-6 md:p-8 flex flex-col justify-center space-y-6">
+                  <div className="space-y-4 text-center">
+                    <h4 className="text-xl font-semibold">Contactez notre équipe</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Remplissez le formulaire pour recevoir toutes les informations sur nos locaux disponibles.
+                    </p>
+                  </div>
+                  <CommercialContactSheet>
+                    <Button size="lg" className="w-full">Demander des informations</Button>
+                  </CommercialContactSheet>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </main>
 
       <Footer />
