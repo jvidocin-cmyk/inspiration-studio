@@ -3,7 +3,8 @@ import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { MapPin, Search, Phone, Mail, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MapPin, Search, Phone, Mail, ExternalLink, Users, Zap, Shield } from "lucide-react";
 import { useState } from "react";
 
 // Exemple de données d'annuaire basé sur le JSON ACF
@@ -94,13 +95,89 @@ const Annuaire = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary to-secondary text-white">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1600&q=80" 
+            alt="Communauté Sky Lounge"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-secondary/90" />
+        </div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <Badge className="mb-6 bg-white/20 text-white border-white/30 backdrop-blur-sm text-sm px-4 py-2 animate-fade-in">
+            Notre Communauté Professionnelle
+          </Badge>
+          
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in [animation-delay:100ms]">
+            Annuaire des Enseignes
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8 animate-fade-in [animation-delay:200ms]">
+            Découvrez les entreprises et professionnels qui font vivre nos espaces. 
+            Une communauté dynamique d'entrepreneurs, commerçants et experts en tous genres.
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-in [animation-delay:300ms]">
+            {[
+              { number: "50+", label: "Entreprises" },
+              { number: "15", label: "Secteurs" },
+              { number: "2", label: "Sites" },
+              { number: "100%", label: "Satisfaits" }
+            ].map((stat, idx) => (
+              <div key={idx} className="text-white">
+                <div className="text-3xl md:text-4xl font-bold mb-1">{stat.number}</div>
+                <div className="text-sm opacity-80">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Introduction Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-4 animate-fade-in-up">
-            <h1 className="text-5xl md:text-6xl font-bold">Annuaire des Enseignes</h1>
-            <p className="text-xl opacity-90">
-              Découvrez les entreprises et professionnels hébergés dans nos espaces
+          <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Rejoignez Notre Écosystème
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Sky Lounge, c'est bien plus que des locaux. C'est une communauté d'entrepreneurs 
+              et de professionnels qui partagent un environnement premium, des valeurs communes 
+              et des opportunités de collaboration. Découvrez qui sont vos voisins !
             </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Users,
+                title: "Networking naturel",
+                description: "Rencontrez d'autres professionnels et développez votre réseau au quotidien"
+              },
+              {
+                icon: Zap,
+                title: "Synergies business",
+                description: "Collaborez avec des entreprises complémentaires hébergées sur place"
+              },
+              {
+                icon: Shield,
+                title: "Visibilité accrue",
+                description: "Profitez de notre annuaire en ligne pour gagner en visibilité locale"
+              }
+            ].map((benefit, idx) => (
+              <Card 
+                key={idx} 
+                className="p-8 text-center border-none shadow-soft hover:shadow-medium transition-all hover:-translate-y-1"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <benefit.icon className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
+                <p className="text-muted-foreground">{benefit.description}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -208,6 +285,79 @@ const Annuaire = () => {
               </p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Ils ont rejoint la communauté</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Découvrez pourquoi ces entreprises ont choisi Sky Lounge
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: "Antoine Rousseau",
+                company: "Restaurant Le Paradis",
+                text: "L'emplacement est stratégique et la visibilité excellente. Nos clients apprécient le parking et le cadre moderne."
+              },
+              {
+                name: "Claire Dubois",
+                company: "Cabinet Juridique Martin",
+                text: "Un environnement professionnel qui inspire confiance à nos clients. Le réseau d'entreprises est un vrai plus."
+              },
+              {
+                name: "Marc Chen",
+                company: "TechCaraïbes Solutions",
+                text: "Nous avons trouvé plusieurs partenaires commerciaux parmi nos voisins. La communauté est dynamique et bienveillante."
+              }
+            ].map((testimonial, idx) => (
+              <Card key={idx} className="p-8 border-none shadow-soft">
+                <div className="mb-4 text-primary text-4xl">"</div>
+                <p className="text-muted-foreground mb-6 italic">{testimonial.text}</p>
+                <div>
+                  <div className="font-semibold">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-primary via-primary to-secondary text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Vous aussi, rejoignez notre communauté
+            </h2>
+            <p className="text-xl opacity-90">
+              Installez votre entreprise dans nos espaces et bénéficiez d'un environnement 
+              professionnel premium au sein d'une communauté d'affaires dynamique.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Button 
+                size="lg" 
+                className="bg-white text-primary hover:bg-white/90 shadow-large"
+                onClick={() => window.location.href = '/baux-commerciaux'}
+              >
+                Voir nos locaux disponibles
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm"
+                onClick={() => window.location.href = '/contact'}
+              >
+                Nous contacter
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 

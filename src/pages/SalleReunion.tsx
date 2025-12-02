@@ -333,6 +333,167 @@ const SalleReunion = () => {
         </div>
       </section>
 
+      {/* Pour Qui Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Pour qui ?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Notre salle de réunion s'adapte à tous vos événements professionnels
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                title: "Réunions d'équipe",
+                description: "Rassemblez vos collaborateurs dans un cadre moderne équipé pour la productivité"
+              },
+              {
+                title: "Formations & Ateliers",
+                description: "Animez vos sessions de formation avec écran géant, paperboard et matériel audio-vidéo"
+              },
+              {
+                title: "Présentations clients",
+                description: "Impressionnez vos prospects avec une salle premium et un équipement professionnel"
+              }
+            ].map((profile, idx) => (
+              <Card key={idx} className="p-8 text-center border-sky-blue/20 hover:border-sky-blue/50 transition-all">
+                <h3 className="text-xl font-semibold mb-3 text-sky-blue">{profile.title}</h3>
+                <p className="text-muted-foreground">{profile.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Comment réserver ?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Trois étapes simples pour organiser votre événement
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                step: "01",
+                title: "Réservez en ligne",
+                description: "Sélectionnez votre créneau, indiquez le nombre de participants et validez votre réservation"
+              },
+              {
+                step: "02",
+                title: "Recevez la confirmation",
+                description: "Nous confirmons votre réservation et vous envoyons toutes les informations pratiques"
+              },
+              {
+                step: "03",
+                title: "Accueillez vos invités",
+                description: "Arrivez 15 minutes avant, nous vous aidons à configurer la salle selon vos besoins"
+              }
+            ].map((process, idx) => (
+              <div key={idx} className="relative">
+                <div className="text-6xl font-bold text-sky-blue/20 mb-4">{process.step}</div>
+                <h3 className="text-2xl font-semibold mb-3">{process.title}</h3>
+                <p className="text-muted-foreground">{process.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">Questions fréquentes</h2>
+              <p className="text-muted-foreground">
+                Tout ce qu'il faut savoir sur la location de salle
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "Quelle est la capacité de la salle ?",
+                  a: "Notre salle peut accueillir confortablement jusqu'à 12 personnes en configuration réunion, et jusqu'à 15 personnes en configuration formation."
+                },
+                {
+                  q: "Peut-on personnaliser la configuration ?",
+                  a: "Oui, nous pouvons adapter la disposition des tables selon vos besoins : en U, salle de classe, théâtre ou table unique."
+                },
+                {
+                  q: "Le matériel audiovisuel est-il inclus ?",
+                  a: "Tous nos tarifs incluent l'écran TV 65 pouces, le vidéoprojecteur HD, le paperboard et le système de visioconférence."
+                },
+                {
+                  q: "Puis-je avoir du café et des rafraîchissements ?",
+                  a: "Oui, la salle donne accès à une cuisine équipée avec machine à café, thé et distributeur d'eau."
+                },
+                {
+                  q: "Y a-t-il un support technique ?",
+                  a: "Notre équipe est disponible pour vous aider avec la configuration du matériel audiovisuel et technique."
+                },
+                {
+                  q: "Puis-je prolonger ma réservation ?",
+                  a: "Si la salle est disponible, vous pouvez prolonger votre réservation. Contactez l'accueil au moins 1h avant la fin de votre créneau."
+                }
+              ].map((faq, idx) => (
+                <Card key={idx} className="p-6 hover:shadow-medium transition-shadow">
+                  <h3 className="font-semibold mb-2 text-lg">{faq.q}</h3>
+                  <p className="text-muted-foreground">{faq.a}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Témoignages clients</h2>
+            <p className="text-muted-foreground">
+              Ce que disent ceux qui ont utilisé notre salle
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: "Thomas Mercier",
+                role: "Directeur Commercial",
+                text: "Salle parfaite pour nos réunions de direction mensuelle. Équipement au top et ambiance professionnelle garantie."
+              },
+              {
+                name: "Isabelle Renard",
+                role: "Formatrice",
+                text: "J'y anime mes formations chaque mois. La qualité du vidéoprojecteur et l'acoustique sont excellents. Mes participants adorent!"
+              },
+              {
+                name: "David Chen",
+                role: "CEO Startup",
+                text: "Nous avons organisé notre assemblée générale ici. Impressionnant rapport qualité-prix et service irréprochable."
+              }
+            ].map((testimonial, idx) => (
+              <Card key={idx} className="p-8">
+                <div className="mb-4 text-sky-blue text-4xl">"</div>
+                <p className="text-muted-foreground mb-6 italic">{testimonial.text}</p>
+                <div>
+                  <div className="font-semibold">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-20 bg-gradient-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
