@@ -22,6 +22,10 @@ import {
   Phone,
   Mail,
   X,
+  Briefcase,
+  Users,
+  Rocket,
+  Target,
 } from "lucide-react";
 
 const BureauPrive = () => {
@@ -40,25 +44,8 @@ const BureauPrive = () => {
     },
     formules: [
       {
-        id: "demi-journee",
-        titre: "Demi-Journée",
-        sous_titre: "4 heures de productivité",
-        prix: "45€",
-        description: "Parfait pour un rendez-vous client, une session de travail concentré ou une demi-journée de télétravail.",
-        equipements: [
-          "Bureau ergonomique équipé",
-          "Connexion fibre optique",
-          "Climatisation individuelle",
-          "Accès cuisine & sanitaires",
-        ],
-        images: [
-          "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
-          "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80",
-        ],
-      },
-      {
         id: "journee",
-        titre: "Journée Complète",
+        titre: "Journée",
         sous_titre: "8 heures de travail optimisé",
         prix: "80€",
         description: "La formule idéale pour une journée productive. Installez-vous dès le matin et profitez de tous les équipements.",
@@ -74,7 +61,6 @@ const BureauPrive = () => {
           "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
           "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
         ],
-        popular: true,
       },
       {
         id: "semaine",
@@ -97,11 +83,35 @@ const BureauPrive = () => {
           "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
           "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
         ],
+        popular: true,
+      },
+      {
+        id: "mois",
+        titre: "Mois",
+        sous_titre: "30 jours d'accès complet",
+        prix: "1200€",
+        description: "Votre bureau attitré pour un mois complet. Idéal pour les missions longues ou l'installation de votre activité.",
+        equipements: [
+          "Bureau ergonomique équipé",
+          "Connexion fibre optique",
+          "Climatisation individuelle",
+          "Accès cuisine & sanitaires",
+          "Parking inclus",
+          "Café & thé offerts",
+          "Casier personnel sécurisé",
+          "Accès 24/7 inclus",
+          "Domiciliation possible",
+          "Salle de réunion (2h offertes)",
+        ],
+        images: [
+          "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
+          "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80",
+        ],
       },
     ],
     infos_pratiques: {
       horaires: "Lundi - Samedi : 7h00 - 20h00",
-      horaires_detail: "Accès 24/7 disponible sur demande pour les formules semaine",
+      horaires_detail: "Accès 24/7 disponible sur demande pour les formules semaine et mois",
       adresse_complete: "Immeuble Sky Lounge, Zone Industrielle de Jarry, 97122 Baie-Mahault, Guadeloupe",
       parking: "Parking gratuit et sécurisé (50 places)",
       unique: [
@@ -112,6 +122,47 @@ const BureauPrive = () => {
       ],
     },
   };
+
+  const profiles = [
+    {
+      icon: Briefcase,
+      title: "Freelances & Indépendants",
+      description: "Besoin d'un cadre professionnel pour recevoir vos clients ou vous concentrer sur vos projets ? Le bureau privé est fait pour vous.",
+    },
+    {
+      icon: Rocket,
+      title: "Startups & Entrepreneurs",
+      description: "Lancez votre activité dans un environnement stimulant, entouré d'autres entrepreneurs ambitieux.",
+    },
+    {
+      icon: Target,
+      title: "Télétravailleurs",
+      description: "Échappez au bruit de la maison et retrouvez un espace dédié au travail, équipé et professionnel.",
+    },
+    {
+      icon: Users,
+      title: "Équipes en mission",
+      description: "Besoin d'un espace temporaire pour votre équipe en déplacement ? Nos bureaux s'adaptent à vos besoins.",
+    },
+  ];
+
+  const processSteps = [
+    {
+      step: "01",
+      title: "Choisissez votre formule",
+      description: "Sélectionnez la durée qui correspond à vos besoins : journée, semaine ou mois.",
+    },
+    {
+      step: "02",
+      title: "Réservez en ligne",
+      description: "Choisissez vos dates et validez votre réservation en quelques clics. Paiement sécurisé.",
+    },
+    {
+      step: "03",
+      title: "Installez-vous",
+      description: "Présentez-vous à l'accueil, on vous remet vos accès et vous êtes opérationnel en 5 minutes.",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -179,7 +230,7 @@ const BureauPrive = () => {
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-8 pt-12 max-w-lg mx-auto animate-fade-in [animation-delay:500ms]">
               {[
-                { value: "45€", label: "à partir de" },
+                { value: "80€", label: "à partir de" },
                 { value: "24/7", label: "accès possible" },
                 { value: "100%", label: "équipé" },
               ].map((stat, idx) => (
@@ -256,7 +307,7 @@ const BureauPrive = () => {
                           <span className={`text-5xl md:text-6xl font-bold ${formule.popular ? 'text-secondary' : 'text-primary'}`}>
                             {formule.prix}
                           </span>
-                          <span className="text-muted-foreground text-lg">/ {formule.id === 'demi-journee' ? '4h' : formule.id === 'journee' ? '8h' : '7 jours'}</span>
+                          <span className="text-muted-foreground text-lg">/ {formule.id === 'journee' ? '8h' : formule.id === 'semaine' ? '7 jours' : '30 jours'}</span>
                         </div>
                       </div>
 
@@ -341,6 +392,86 @@ const BureauPrive = () => {
         </div>
       </section>
 
+      {/* ==================== POUR QUI SECTION ==================== */}
+      <section className="py-24 md:py-32 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-6 bg-secondary/10 text-secondary border-secondary/20">
+              Profils
+            </Badge>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Pour <span className="text-gradient-sky">Qui ?</span>
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Notre bureau privé s'adapte à tous les professionnels qui recherchent un espace de travail flexible et premium.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {profiles.map((profile, idx) => (
+              <Card
+                key={idx}
+                className="p-8 border-2 border-border hover:border-primary/30 transition-all duration-300 hover:shadow-medium group"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <profile.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">{profile.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{profile.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== COMMENT RÉSERVER SECTION ==================== */}
+      <section className="py-24 md:py-32 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
+              Processus
+            </Badge>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Comment <span className="text-gradient-sky">Réserver ?</span>
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Trois étapes simples pour accéder à votre bureau privatif.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {processSteps.map((step, idx) => (
+              <div key={idx} className="relative text-center">
+                {/* Step Number */}
+                <div className="text-8xl md:text-9xl font-bold text-primary/10 mb-4">
+                  {step.step}
+                </div>
+                {/* Arrow connector (hidden on last item) */}
+                {idx < processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-16 right-0 translate-x-1/2 z-10">
+                    <ChevronRight className="w-8 h-8 text-primary/30" />
+                  </div>
+                )}
+                <h3 className="text-2xl font-bold mb-4 -mt-8">{step.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-16">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-lg px-10 py-7 rounded-xl font-semibold group"
+              onClick={() => window.open("https://cal.com", "_blank")}
+            >
+              <Calendar className="mr-2 h-5 w-5" />
+              Réserver maintenant
+              <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* ==================== INFORMATIONS PRATIQUES ==================== */}
       <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-4">
@@ -397,57 +528,41 @@ const BureauPrive = () => {
                     </div>
                   </div>
                 </Card>
-
-                {/* Contact Quick */}
-                <Card className="p-8 border-2 border-secondary/30 bg-secondary/5 hover:shadow-medium transition-all">
-                  <h3 className="text-xl font-bold mb-4">Une question ?</h3>
-                  <div className="space-y-3">
-                    <a href="tel:+590590000000" className="flex items-center gap-3 text-foreground hover:text-secondary transition-colors">
-                      <Phone className="w-5 h-5" />
-                      <span>+590 590 00 00 00</span>
-                    </a>
-                    <a href="mailto:contact@skylounge.gp" className="flex items-center gap-3 text-foreground hover:text-secondary transition-colors">
-                      <Mail className="w-5 h-5" />
-                      <span>contact@skylounge.gp</span>
-                    </a>
-                  </div>
-                </Card>
               </div>
 
-              {/* Right Column - What Makes It Unique */}
-              <Card className="p-10 md:p-12 border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-secondary/5">
+              {/* Right Column - Unique Points */}
+              <Card className="p-10 border-2 border-secondary/30 bg-gradient-to-br from-card to-secondary/5 shadow-elegant">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 rounded-2xl bg-secondary/20 flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-secondary" />
                   </div>
                   <h3 className="text-2xl font-bold">Ce qui rend cet espace unique</h3>
                 </div>
 
-                <ul className="space-y-6">
-                  {offerData.infos_pratiques.unique.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-4">
-                      <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <ul className="space-y-5">
+                  {offerData.infos_pratiques.unique.map((point, idx) => (
+                    <li key={idx} className="flex items-center gap-4">
+                      <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
                         <Check className="w-4 h-4 text-secondary" />
                       </div>
-                      <span className="text-lg text-foreground leading-relaxed">{item}</span>
+                      <span className="text-lg text-foreground">{point}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Decorative */}
-                <div className="mt-10 pt-8 border-t border-primary/20">
-                  <div className="flex items-center gap-4">
-                    <div className="flex -space-x-3">
-                      {[1, 2, 3].map((_, i) => (
-                        <div key={i} className="w-10 h-10 rounded-full bg-secondary/30 border-2 border-white flex items-center justify-center text-xs font-bold text-secondary">
-                          {['J', 'M', 'A'][i]}
-                        </div>
-                      ))}
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Rejoignez notre communauté</p>
-                      <p className="text-sm text-muted-foreground">+50 professionnels nous font confiance</p>
-                    </div>
+                <div className="mt-10 pt-8 border-t border-secondary/20">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                    Contact rapide
+                  </h4>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary/10 flex-1">
+                      <Phone className="w-4 h-4 mr-2" />
+                      0590 XX XX XX
+                    </Button>
+                    <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary/10 flex-1">
+                      <Mail className="w-4 h-4 mr-2" />
+                      Email
+                    </Button>
                   </div>
                 </div>
               </Card>
@@ -456,66 +571,41 @@ const BureauPrive = () => {
         </div>
       </section>
 
-      {/* ==================== CTA FINALE ==================== */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-primary via-primary to-secondary/80 relative overflow-hidden">
-        {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 left-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl" />
-        </div>
+      {/* ==================== CTA FINAL ==================== */}
+      <section className="py-24 md:py-32 bg-gradient-to-br from-primary via-primary to-primary/90 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-10">
-            <Badge className="bg-white/15 text-white border-white/25 backdrop-blur-sm px-5 py-2">
-              Réservez dès maintenant
-            </Badge>
-
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-              Prêt à Booster
-              <br />
-              <span className="text-secondary-foreground">Votre Productivité ?</span>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Prêt à Réserver Votre Bureau ?
             </h2>
-
-            <p className="text-xl md:text-2xl text-white/85 max-w-2xl mx-auto leading-relaxed">
-              Réservez votre bureau privé en quelques clics et rejoignez un espace de travail 
-              conçu pour votre réussite professionnelle.
+            <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto">
+              Rejoignez notre communauté de professionnels et travaillez dans un cadre d'exception en Guadeloupe.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-5 justify-center pt-4">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button
                 size="lg"
-                className="bg-white text-primary hover:bg-white/95 shadow-large text-xl px-12 py-8 rounded-xl font-semibold group"
+                className="bg-white text-primary hover:bg-white/95 shadow-large text-xl px-12 py-8 rounded-xl font-bold group"
                 onClick={() => window.open("https://cal.com", "_blank")}
               >
                 <Calendar className="mr-3 h-6 w-6" />
                 Réserver maintenant
-                <ChevronRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
+
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm text-xl px-10 py-8 rounded-xl font-semibold"
+                className="border-2 border-white text-white hover:bg-white/10 text-xl px-12 py-8 rounded-xl font-bold"
                 onClick={() => setIsContactOpen(true)}
               >
                 <Phone className="mr-3 h-6 w-6" />
                 Nous contacter
               </Button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="pt-8 flex flex-wrap justify-center gap-8 text-white/70">
-              <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5" />
-                <span>Paiement sécurisé</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5" />
-                <span>Confirmation immédiate</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-5 h-5" />
-                <span>Annulation flexible</span>
-              </div>
             </div>
           </div>
         </div>
@@ -527,7 +617,7 @@ const BureauPrive = () => {
       <CommercialContactSheet
         open={isContactOpen}
         onOpenChange={setIsContactOpen}
-        listingTitle="Bureau Privé"
+        listingTitle={offerData.titre_offre}
       />
 
       {/* Lightbox */}
@@ -537,10 +627,10 @@ const BureauPrive = () => {
           onClick={() => setLightboxImage(null)}
         >
           <button
-            className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
             onClick={() => setLightboxImage(null)}
           >
-            <X className="w-8 h-8" />
+            <X className="w-6 h-6 text-white" />
           </button>
           <img
             src={lightboxImage}
