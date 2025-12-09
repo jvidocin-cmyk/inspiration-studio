@@ -18,6 +18,9 @@ import APropos from "./pages/APropos";
 import CGV from "./pages/CGV";
 import MentionsLegales from "./pages/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
+import Paiement from "./pages/Paiement";
+import PaiementSucces from "./pages/PaiementSucces";
+import PaiementAnnule from "./pages/PaiementAnnule";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +45,9 @@ const App = () => (
           <Route path="/cgv" element={<CGV />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+          <Route path="/paiement" element={<Paiement />} />
+          <Route path="/paiement-succes" element={<PaiementSucces />} />
+          <Route path="/paiement-annule" element={<PaiementAnnule />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
